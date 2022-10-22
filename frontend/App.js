@@ -11,6 +11,7 @@ const {
   NavigationContainer,
   useNavigation,
 } = require("@react-navigation/native");
+// const { createBottomTabNavigator } = require('@react-navigation/bottom-tabs');
 const {
   createNativeStackNavigator,
 } = require("@react-navigation/native-stack");
@@ -70,13 +71,14 @@ function StatScreen({ navigation }) {
 }
 
 const Stack = createNativeStackNavigator();
+// const Tab = createBottomTabNavigator();
 
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} options={({ route }) => ({ title: route.params.name })}/>
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Input" component={InputScreen} />
       </Stack.Navigator>
     </NavigationContainer>
