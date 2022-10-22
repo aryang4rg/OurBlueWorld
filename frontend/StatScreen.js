@@ -8,8 +8,16 @@ const {
 	TextInput,
 } = require("react-native");
 
+const {styles} = require("./styles");
+
+function getData(user) {
+	
+}
+
 function StatScreen(props) {
 	let {user} = props;
+
+	userData = getData(user);
 
 	return (
 		<View>
