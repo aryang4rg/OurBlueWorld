@@ -16,7 +16,7 @@ const {
 	createNativeStackNavigator,
 } = require("@react-navigation/native-stack");
 
-function HomeScreen({ navigation }) {
+function StartScreen({ navigation }) {
 	return (
 		<View style={styles.startScreen}>
 			<Text style={styles.startText}>GreenTracker</Text>
@@ -39,7 +39,7 @@ function LoginScreen({ navigation }) {
 				<Button
 					color="black"
 					title="Start Game!"
-					onPress={() => navigation.navigate("Input")}
+					onPress={() => navigation.navigate("Home")}
 				/>
 			</View>
 		</View>
@@ -73,21 +73,30 @@ function StatScreen({ navigation }) {
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function Home() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Input" component={InputScreen} />
+      <Tab.Screen name="Leaderboard" component={LeaderboardScreen} />
+      <Tab.Screen name="Stats" component={StatScreen} />
+    </Tab.Navigator>
+  );
+}
+
 function App() {
-	return (
-		<NavigationContainer>
-			{/* <Stack.Navigator initialRouteName="Home">
-				<Stack.Screen name="Home" component={HomeScreen} />
-				<Stack.Screen name="Login" component={LoginScreen} />
-				<Stack.Screen name="Input" component={InputScreen} />
-			</Stack.Navigator> */}
-			<Tab.Navigator>
-				<Tab.Screen name="Input" component={HomeScreen} />
-				<Tab.Screen name="Leaderboard" component={LeaderboardScreen} />
-				<Tab.Screen name="Stat" component={StatScreen} />
-			</Tab.Navigator>
-		</NavigationContainer>
-	);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Start"
+          component={StartScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default App;
