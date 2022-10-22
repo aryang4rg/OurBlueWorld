@@ -8,10 +8,12 @@ const {
 	TextInput,
 } = require("react-native");
 
-function LeaderboardScreen({ navigation }) {
+function LeaderboardScreen(props) {
+	let {user} = props;
+
 	return (
 		<View>
-			<Text>leader</Text>
+			<Text>{user}</Text>
 		</View>
 	);
 }

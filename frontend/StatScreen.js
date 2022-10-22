@@ -8,10 +8,12 @@ const {
 	TextInput,
 } = require("react-native");
 
-function StatScreen({ navigation }) {
+function StatScreen(props) {
+	let {user} = props;
+
 	return (
 		<View>
-			<Text>stat</Text>
+			<Text>{user}</Text>
 		</View>
 	);
 }

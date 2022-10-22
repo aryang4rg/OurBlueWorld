@@ -11,14 +11,15 @@ const {
 const {styles} = require("./styles");
 
 function LoginScreen({ navigation }) {
-	
+	let user = "aryan";
+
 	return (
 		<View>
 			<View style={styles.button}>
 				<Button
 					color="black"
 					title="Start Game!"
-					onPress={() => navigation.navigate("Home")}
+					onPress={() => navigation.navigate("Home", { user })}
 				/>
 			</View>
 		</View>

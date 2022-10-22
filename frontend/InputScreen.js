@@ -13,10 +13,12 @@ const {
 } = require("@react-navigation/native");
 const { createBottomTabNavigator } = require("@react-navigation/bottom-tabs");
 
-function InputScreen({ navigation }) {
+function InputScreen(props) {
+	let {user} = props;
+
 	return (
 		<View>
-			<Text>input</Text>
+			<Text>{user}</Text>
 		</View>
 	);
 }
