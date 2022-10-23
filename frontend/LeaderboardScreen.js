@@ -35,7 +35,7 @@ props.data = {
 function LeaderboardPerson(props) {
 	return (
 		<View style={styles.profileContainer}>
-			<Text></Text>
+			<Text style={styles.numberText}>1.</Text>
 			<Image style={styles.profilePicture} source={DATACONST.LOGOURL} />
 			<View style={styles.profileTextContainer}>
 				<Text style={styles.surveyText}>{props.data.name}</Text>
@@ -174,6 +174,13 @@ const styles = StyleSheet.create({
 		color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		margin: 6,
+	  },
+	  numberText: {
+		fontFamily: DATACONST.font,
+		fontSize: 20,
+		color: DATACONST.fontColor2,
+		fontWeight: "bold",
+		margin: 8,
 	  },
 	whiteContainerContainer: {
 		flexDirection: "row",
