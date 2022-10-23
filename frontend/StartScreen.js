@@ -16,9 +16,9 @@ function StartScreen({ navigation }) {
     <View style={styles.startScreen}>
       <Image
         source={{
-          uri: "https://media.glamour.com/photos/5d37931a43302600082ef61b/2:1/w_5052,h_2526,c_limit/taylor-swift.jpg",
+          uri: "https://media.discordapp.net/attachments/1032434111006118012/1033626593815437362/logo_1.png",
         }}
-        style={{ width: 300, height: 350, margin: 80 }}
+        style={{ width: 350, height: 350, margin: 80, borderRadius: 350 }}
       />
       <Text style={styles.startText}>GreenTracker</Text>
       {/* <Text style={styles.sloganText}>Slogan</Text> */}
