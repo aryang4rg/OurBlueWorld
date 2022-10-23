@@ -4,6 +4,7 @@ from flask import request
 from flask import abort
 from flask import send_file
 from flask import json
+from flask_cors import CORS, cross_origin
 
 import string
 import random
@@ -15,7 +16,11 @@ from mongo import Mongo
 from user import User
 
 app = Flask(__name__)
-
+cors = CORS(app, resource = {
+   r"/*":{
+      "origins" : "*"
+   }
+})
 
 userdb = Mongo()
 
@@ -36,10 +41,10 @@ def bye_name(name):
 
 @app.route('/signup', methods=['POST'])
 def sign_up():
+   print(request.get_json())
    def check_string(category, user_dict):
       if (category not in user_dict):
          return False
-
       user_input = user_dict[category]
 
       if isinstance(user_input, str):
@@ -51,26 +56,37 @@ def sign_up():
          return False
 
    content = request.get_json()
+   print(content)
 
    if (not check_string("username", content)):
-      abort(400, "invalid")
+      print("invalid username")
+      abort(400, "invalid username")
    if (userdb.find(content["username"]) != None):
+      print("invalid username")
       abort(400, "user already exists")
    if (not check_string("password", content)):
-      abort(400, "invalid")
+      print("invalid password")
+      abort(400, "invalid password")
    if (not check_string("name", content)):
-      abort(400, "invalid")
+      print("invalid name")
+      abort(400, "invalid name")
    if (not check_string("groupid", content)):
-      abort(400, "invalid")
+      print("invalid groupid")
+      abort(400, "invalid groupid")
    if (not check_string("city", content)):
-      abort(400, "invalid")
+      print("invalid city")
+      abort(400, "invalid city")
    if (not check_string("state", content)):
-      abort(400, "invalid")
+      print("invalid state")
+      abort(400, "invalid state")
    if (not check_string("email", content)):
-      abort(400, "invalid")
+      print("invalid email")
+      abort(400, "invalid email")
    if (not check_string("phoneNumber", content)):
-      abort(400, "invalid")
+      print("invalid phoneNumber")
+      abort(400, "invalid phoneNumber")
 
+   print(content)
    token = ''.join(random.choice(string.ascii_letters + string.digits)
                   for _ in range(64))
 
@@ -308,9 +324,9 @@ def token():
 def profilePicture():
 	username = request.args.get("q")
 	pic_address = "./cdn/profile_picture/" + username + ".png"
-	if os.path.isdir(pic_address):
+	if not os.path.isdir(pic_address):
 		pic_address = "./cdn/profile_picture/defaultpfp.png"
 	return send_file(pic_address, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port = 5010, debug=True)
