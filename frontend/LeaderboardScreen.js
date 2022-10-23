@@ -35,10 +35,12 @@ props.data = {
 function LeaderboardPerson(props) {
 	return (
 		<View style={styles.profileContainer}>
+			<Text></Text>
 			<Image style={styles.profilePicture} source={DATACONST.LOGOURL} />
 			<View style={styles.profileTextContainer}>
-				<Text>{props.data.name}</Text>
-				<Text>{props.data.activities.impactScore}</Text>
+				<Text style={styles.surveyText}>{props.data.name}</Text>
+				<Text style={styles.surveyText}>{"Impact Score: " + props.data.activities.impactScore}</Text>
+				<Text style={styles.surveyText}>{"Days Participated: " + props.data.activities.numberOfActivities}</Text>
 			</View>
 		</View>
 	);
@@ -166,6 +168,13 @@ const styles = StyleSheet.create({
 		width: 90,
 		height: 90,
 	},
+	surveyText: {
+		fontFamily: DATACONST.font,
+		fontSize: 20,
+		color: DATACONST.fontColor2,
+		fontWeight: "bold",
+		margin: 6,
+	  },
 	whiteContainerContainer: {
 		flexDirection: "row",
 		backgroundColor: DATACONST.bkgColorFour,
@@ -173,7 +182,7 @@ const styles = StyleSheet.create({
 		padding: 15,
 		paddingHorizontal: 5,
 		shadowColor: "#171717",
-		shadowOffset: { width: -2, height: 6 },
+		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.5,
 		shadowRadius: 5,
 	},
