@@ -8,11 +8,7 @@ const {
   TextInput,
 } = require("react-native");
 
-const { styles } = require("./styles");
-
 function StartScreen({navigation}) {
-//   let navigation = props.navigation;
-
   return (
       <View style={styles.startScreen}>
         <Text style={styles.startText}>GreenTracker</Text>
@@ -30,3 +26,20 @@ function StartScreen({navigation}) {
 }
 
 export { StartScreen };
+
+const styles = StyleSheet.create({
+	startScreen: {
+		backgroundColor: "#064273",
+		justifyContent: "top",
+		alignItems: "center",
+		flex: 1,
+	},
+	startText: {
+		fontFamily: "Helvetica",
+		fontSize: 50,
+        color: "#7fcdff",
+		fontWeight: "bold",
+		textAlign: "center",
+		paddingVertical: 80,
+	},
+});

@@ -14,8 +14,6 @@ const {
 	createNativeStackNavigator,
 } = require("@react-navigation/native-stack");
 
-const {styles} = require("./styles");
-
 const {StartScreen} = require("./StartScreen");
 const {LoginScreen} = require("./LoginScreen.js");
 const {HomeScreen} = require("./HomeScreen");

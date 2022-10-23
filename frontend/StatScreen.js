@@ -8,7 +8,6 @@ const {
   TextInput,
 } = require("react-native");
 
-const { styles } = require("./styles");
 const { DATACONST } = require("./util");
 
 class StatScreen extends React.Component {
@@ -31,7 +30,7 @@ class StatScreen extends React.Component {
 
 	let apiData = {
 		"username" : "aryangarg",
-		"name" : "Aryan",
+		"name" : "Aryan Garg",
 		"groupid" : "GroupId", 
 		"company" : "Vanderbilt University",
 		"activities" : {
@@ -77,3 +76,25 @@ class StatScreen extends React.Component {
 }
 
 export { StatScreen };
+
+const styles = StyleSheet.create({
+    statScreen: {
+		backgroundColor: "#064273",
+		justifyContent: "top",
+		flex: 1,
+	},
+    statText: {
+        fontFamily: "Helvetica",
+		fontSize: 50,
+        color: "#7fcdff",
+		fontWeight: "bold",
+		paddingVertical: 0,
+        paddingHorizontal: 10,
+    },
+    profilePicture: {
+        margin: 20,
+        borderRadius: 150,
+        width: 150, 
+        height: 150,
+    }
+});
