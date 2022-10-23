@@ -18,7 +18,7 @@ function StartScreen({ navigation }) {
         source={{
           uri: DATACONST.LOGOURL,
         }}
-        style={{ width: 350, height: 350, margin: 80, borderRadius: 350 }}
+        style={{ width: 320, height: 320, margin: 80, borderRadius: 320 }}
       />
       <Text style={styles.startText}>OurBlueWorld</Text>
       {/* <Text style={styles.sloganText}>Slogan</Text> */}
@@ -48,11 +48,11 @@ const styles = StyleSheet.create({
   },
   startText: {
     fontFamily: DATACONST.font,
-    fontSize: 50,
+    fontSize: 45,
     color: DATACONST.fontColor,
     fontWeight: "bold",
     textAlign: "center",
-    paddingVertical: 20,
+    paddingVertical: 10,
   },
   sloganText: {
     fontFamily: DATACONST.font,
