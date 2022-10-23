@@ -7,6 +7,10 @@ const {
   Text,
   Image,
 } = require("react-native");
+const {
+  NavigationContainer,
+  useNavigation,
+} = require("@react-navigation/native");
 
 const { DATACONST } = require("./util");
 

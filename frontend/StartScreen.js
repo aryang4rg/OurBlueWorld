@@ -16,7 +16,7 @@ function StartScreen({ navigation }) {
     <View style={styles.startScreen}>
       <Image
         source={{
-          uri: "https://media.discordapp.net/attachments/1032434111006118012/1033626593815437362/logo_1.png",
+          uri: DATACONST.LOGOURL,
         }}
         style={{ width: 350, height: 350, margin: 80, borderRadius: 350 }}
       />

@@ -278,8 +278,9 @@ const styles = StyleSheet.create({
 		margin: 25,
 	},
 	tinyLogo: {
-		width: "75%",
+		width: 100,
 		height: 100,
+		borderRadius: 100,
 	},
 	whiteContainer: {
 		flex: 1,

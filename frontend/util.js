@@ -2,7 +2,7 @@ const React = require("react");
 
 export const DATACONST = {
 	BASEURL: "http://localhost:3000/",
-	LOGOURL: "https://www.pngkey.com/png/detail/99-992640_ocean-logo.png",
+	LOGOURL: "https://media.discordapp.net/attachments/1032434111006118012/1033626593815437362/logo_1.png",
 	font: "Helvetica",
 	fontColor: "#7fcdff",
 	fontColor2: "#045e8f",

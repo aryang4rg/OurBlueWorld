@@ -9,6 +9,10 @@ const {
 	Image,
 	TextInput,
 } = require("react-native");
+const {
+	NavigationContainer,
+	useNavigation,
+  } = require("@react-navigation/native");
 
 /*
 props.data = {

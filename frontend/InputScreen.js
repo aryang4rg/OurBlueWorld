@@ -2,13 +2,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import Slider from "react-native-sliders";
 
 const React = require("react");
-const {
-  StyleSheet,
-  Button,
-  View,
-  Text,
-  Image,
-} = require("react-native");
+const { StyleSheet, Button, View, Text, Image } = require("react-native");
 const {
   NavigationContainer,
   useNavigation,
@@ -56,14 +50,14 @@ class InputScreen extends React.Component {
     this.state = {
       userData: null,
     };
-	this.showerValue = 0;
-	this.bathroomValue = 0;
-	this.gasValue = 0;
-	this.acValue = 0;
-	this.plasticValue = 0;
-	this.recycleValue = 0;
-	this.volunteerValue = 0;
-	this.pickValue = 0;
+    this.showerValue = 0;
+    this.bathroomValue = 0;
+    this.gasValue = 0;
+    this.acValue = 0;
+    this.plasticValue = 0;
+    this.recycleValue = 0;
+    this.volunteerValue = 0;
+    this.pickValue = 0;
   }
 
   componentDidMount() {
@@ -101,50 +95,48 @@ class InputScreen extends React.Component {
   }
 
   submitAnswers = () => {
-	let waterScore = 5*(10-this.showerValue)+10*(5-this.bathroomValue);
-	let CO2Score = 0.5*(100-this.gasValue)+(50/24)*(24-this.acValue);
-	let plasticScore = 5*(10-this.plasticValue)+5*(this.recycleValue-10);
-	let volunteerScore = 5*(this.volunteerValue-10)+5*(this.pickValue-10);
-	let impactScore = (waterScore+CO2Score+plasticScore+volunteerScore)/4;
+    let waterScore =
+      5 * (10 - this.showerValue) + 10 * (5 - this.bathroomValue);
+    let CO2Score =
+      0.5 * (100 - this.gasValue) + (50 / 24) * (24 - this.acValue);
+    let plasticScore =
+      5 * (10 - this.plasticValue) + 5 * (this.recycleValue - 10);
+    let volunteerScore =
+      5 * (this.volunteerValue - 10) + 5 * (this.pickValue - 10);
+    let impactScore =
+      (waterScore + CO2Score + plasticScore + volunteerScore) / 4;
 
-	let token = this.props.token;
+    let token = this.props.token;
 
-	let surveyResults = {
-		"token" : token, 
-		"activity" : {
-		  "waterScore" : waterScore, 
-		  "co2Score" : CO2Score,
-		  "serviceScore" : volunteerScore, 
-		  "wasteScore" : plasticScore,
-		  "impactScore" : impactScore,
-		}
-	  };
+    let surveyResults = {
+      token: token,
+      activity: {
+        waterScore: waterScore,
+        co2Score: CO2Score,
+        serviceScore: volunteerScore,
+        wasteScore: plasticScore,
+        impactScore: impactScore,
+      },
+    };
 
-	// console.log(token);
+    // console.log(token);
 
-	// let fetchResp = await fetch(DATACONST.BASEURL + "/surveys", {
-	// 		method: "POST",
-	// 		body: JSON.stringify(surveyResults),
-	// 	});
+    // let fetchResp = await fetch(DATACONST.BASEURL + "/surveys", {
+    // 		method: "POST",
+    // 		body: JSON.stringify(surveyResults),
+    // 	});
 
-	// 	if (!fetchResp.ok) {
-	// 		console.error("Error logging in: " + JSON.stringify(fetchResp));
-	// 		alert("Survey Failed");
-	// 		return;
-	// 	}
+    // 	if (!fetchResp.ok) {
+    // 		console.error("Error logging in: " + JSON.stringify(fetchResp));
+    // 		alert("Survey Failed");
+    // 		return;
+    // 	}
 
-	// 	let resp = await fetchResp.json();
-	// console.log(resp);
+    // 	let resp = await fetchResp.json();
+    // console.log(resp);
 
-	this.showerValue = 0;
-	this.bathroomValue = 0;
-	this.gasValue = 0;
-	this.acValue = 0;
-	this.plasticValue = 0;
-	this.recycleValue = 0;
-	this.volunteerValue = 0;
-	this.pickValue = 0;
-  }
+    this.props.navigation.navigate("Stats");
+  };
 
   render() {
     if (this.state.userData == null) {
@@ -157,78 +149,90 @@ class InputScreen extends React.Component {
 
     let personalInfo = this.state.userData;
 
-	return (
-		<ScrollView>
-      <View style={styles.inputScreen}>
-        <View style={styles.whiteContainerContainer}>
-          <Text style={styles.headingText}>
-            {personalInfo["company"] + "'s Daily Survey"}
-          </Text>
-          <Image
-            source={{
-              // uri: BASEURL+"profile_picture?q="+personalInfo["username"],
-              uri: "https://media.istockphoto.com/vectors/checklist-icon-vector-design-vector-id1327963048?k=20&m=1327963048&s=612x612&w=0&h=Kwki80wTh0CgHgptCSor5Nz6l3GGPrTMDInJ7CnQ3GU=",
+    return (
+      <ScrollView>
+        <View style={styles.inputScreen}>
+          <View style={styles.whiteContainerContainer}>
+            <Text style={styles.headingText}>
+              {personalInfo["company"] + "'s Daily Survey"}
+            </Text>
+            <Image
+              source={{
+                // uri: BASEURL+"profile_picture?q="+personalInfo["username"],
+                uri: "https://media.istockphoto.com/vectors/checklist-icon-vector-design-vector-id1327963048?k=20&m=1327963048&s=612x612&w=0&h=Kwki80wTh0CgHgptCSor5Nz6l3GGPrTMDInJ7CnQ3GU=",
+              }}
+              style={styles.surveyPicture}
+            />
+          </View>
+          <Question
+            question="How many hours did you shower today?"
+            min={0}
+            max={10}
+            onValueChange={(newShowerValue) => {
+              this.showerValue = newShowerValue;
             }}
-            style={styles.surveyPicture}
           />
+          <Question
+            question="How many times did you go to the bathroom?"
+            min={0}
+            max={5}
+            onValueChange={(newBathroomValue) => {
+              this.bathroomValue = newBathroomValue;
+            }}
+          />
+          <Question
+            question="How many miles did you travel in a gasoline car today?"
+            min={0}
+            max={100}
+            onValueChange={(newGasValue) => {
+              this.gasValue = newGasValue;
+            }}
+          />
+          <Question
+            question="How many hours was your heater/ac on?"
+            min={0}
+            max={24}
+            onValueChange={(newACValue) => {
+              this.acValue = newACValue;
+            }}
+          />
+          <Question
+            question="How many pounds of plastic material did you use today?"
+            min={0}
+            max={10}
+            onValueChange={(newPlasticValue) => {
+              this.plasticValue = newPlasticValue;
+            }}
+          />
+          <Question
+            question="How many pounds did you recycle?"
+            min={0}
+            max={10}
+            onValueChange={(newRecycleValue) => {
+              this.recycleValue = newRecycleValue;
+            }}
+          />
+          <Question
+            question="How many hours did you volunteer?"
+            min={0}
+            max={10}
+            onValueChange={(newVolunteerValue) => {
+              this.volunteerValue = newVolunteerValue;
+            }}
+          />
+          <Question
+            question="How many pounds of trash did you pick up?"
+            min={0}
+            max={10}
+            onValueChange={(newPickValue) => {
+              this.pickValue = newPickValue;
+            }}
+          />
+          <View style={styles.button}>
+            <Button color="black" title="Submit" onPress={this.submitAnswers} />
+          </View>
         </View>
-		<Question
-          question="How many hours did you shower today?"
-          min={0}
-		  max={10}
-		  onValueChange={(newShowerValue) => {this.showerValue = newShowerValue}}
-        />
-        <Question
-          question="How many times did you go to the bathroom?"
-          min={0}
-		  max={5}
-		  onValueChange={(newBathroomValue) => {this.bathroomValue = newBathroomValue}}
-        />
-		<Question
-          question="How many miles did you travel in a gasoline car today?"
-          min={0}
-		  max={100}
-		  onValueChange={(newGasValue) => {this.gasValue = newGasValue}}
-        />
-		<Question
-          question="How many hours was your heater/ac on?"
-          min={0}
-		  max={24}
-		  onValueChange={(newACValue) => {this.acValue = newACValue}}
-        />
-		<Question
-          question="How many pounds of plastic material did you use today?"
-          min={0}
-		  max={10}
-		  onValueChange={(newPlasticValue) => {this.plasticValue = newPlasticValue}}
-        />
-		<Question
-          question="How many pounds did you recycle?"
-          min={0}
-		  max={10}
-		  onValueChange={(newRecycleValue) => {this.recycleValue = newRecycleValue}}
-        />
-		<Question
-          question="How many hours did you volunteer?"
-          min={0}
-		  max={10}
-		  onValueChange={(newVolunteerValue) => {this.volunteerValue = newVolunteerValue}}
-        />
-		<Question
-          question="How many pounds of trash did you pick up?"
-          min={0}
-		  max={10}
-		  onValueChange={(newPickValue) => {this.pickValue = newPickValue}}
-        />
-		<View style={styles.button}>
-        <Button
-          color="black"
-          title="Submit"
-          onPress={this.submitAnswers}
-        />
-      </View>
-      </View>
-	  </ScrollView>
+      </ScrollView>
     );
   }
 }
@@ -288,7 +292,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-	color: "black",
+    color: "black",
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 40,
