@@ -8,8 +8,6 @@ const {
 	TextInput,
 } = require("react-native");
 
-const {styles} = require("./styles");
-
 function LoginScreen({ navigation }) {
 	let user = "aryan";
 
@@ -27,3 +25,16 @@ function LoginScreen({ navigation }) {
 }
 
 export { LoginScreen };
+
+const styles = StyleSheet.create({
+	button: {
+		alignItems: "center",
+		justifyContent: "center",
+		paddingVertical: 8,
+		paddingHorizontal: 50,
+		borderRadius: 40,
+		elevation: 3,
+		margin: 10,
+		backgroundColor: "black",
+	},
+});
