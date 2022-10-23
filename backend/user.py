@@ -25,4 +25,14 @@ class User:
             Activities.dictToActivities(dict["activities"]))
 
     def __lt__(self, other):
-        return self.activities["impactScore"] < other.activities["impactScore"]
+        thisScore = self.activities["impactScore"]
+        thisNumber = self.activities["numberOfActivities"]
+        otherScore = other.activities["impactScore"]
+        otherNumber = other.activities["numberOfActivities"]
+
+        if thisNumber == 0:
+            thisNumber = 1
+        if otherNumber == 0:
+            otherNumber = 1
+        
+        return 1.0 * thisScore / thisNumber < 1.0 * otherScore / otherNumber

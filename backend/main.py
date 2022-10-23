@@ -161,29 +161,28 @@ def profile():
     dict.pop("phoneNumber")
     return dict
 
-# @app.route('/leaderboard', methods = ['GET'])
-# def profile():
-#    users = userdb.mycol.find()
-#    sortedUsers = {}
-#    for userDict in users:
-#       sortedUsers[userDict["username"]] = (userDict["activities"])["impactScore"]
+@app.route('/leaderboard', methods = ['GET'])
+def leaderboard():
+   users = userdb.mycol.find()
+   userList = []
+
+   for userDict in users:
+      userList.append(User.dictToUser(userDict))
+   userList.sort(reverse = True)
+
+   returnList = []
+   for user1 in userList:
+      myDict = user1.__dict__
+      myDict.pop("password")
+      myDict.pop("token")
+      myDict.pop("email")
+      myDict.pop("phoneNumber")
+      returnList.append(myDict)
    
-
-
-
-#       for j in range(i + 1, userdb.mycol.count_documents({})):
-#          if (userdb.)
-#    username = request.args.get("q")
-#    user = userdb.find(username)
-#    if user == None:
-#       abort(400, "user does not exist")
-#    print("hi")
-#    dict = user.__dict__
-#    dict.pop("password")
-#    dict.pop("token")
-#    dict.pop("email")
-#    dict.pop("phoneNumber")
-#    return dict
+   print("hi")
+   returnDict = {"rankingList" : returnList}
+   print(returnDict)
+   return returnDict
 
 if __name__ == '__main__':
     app.run()
