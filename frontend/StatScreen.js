@@ -30,8 +30,8 @@ class StatScreen extends React.Component {
 
 	let apiData = {
 		"username" : "aryangarg",
-		"name" : "Aryan Garg",
-		"groupid" : "GroupId", 
+		"name" : "Rohan Rash",
+		"groupid" : "GroupId",
 		"company" : "Vanderbilt University",
 		"activities" : {
 			"waterScore" : 274, 
@@ -42,8 +42,8 @@ class StatScreen extends React.Component {
 			"impactScore" : 23810,
 			"numberOfActivities" : 63
 		}, 
-		"city" : "cupertino",
-		"state" : "California",
+		"city" : "Cupertino",
+		"state" : "CA",
 	};
 	
 	this.setState({
@@ -67,8 +67,11 @@ class StatScreen extends React.Component {
 		}}
         style={styles.profilePicture}
       	/>
-        <Text style={styles.statText}>
+        <Text style={styles.nameText}>
 			{personalInfo["name"]}
+		</Text>
+		<Text style={styles.smallText}>
+			{personalInfo["city"] + ", " + personalInfo["state"]}
 		</Text>
       </View>
     );
@@ -82,19 +85,23 @@ const styles = StyleSheet.create({
 		backgroundColor: DATACONST.bkgColorSecondary,
 		justifyContent: "top",
 		flex: 1,
+		alignItems: "center",
 	},
-    statText: {
+    nameText: {
         fontFamily: DATACONST.font,
 		fontSize: 50,
         color: DATACONST.fontColor2,
 		fontWeight: "bold",
-		paddingVertical: 0,
-        paddingHorizontal: 10,
+    },
+	smallText: {
+        fontFamily: DATACONST.font,
+		fontSize: 15,
+        color: DATACONST.fontColor2,
     },
     profilePicture: {
-        margin: 20,
+        margin: 10,
         borderRadius: 150,
-        width: 150, 
-        height: 150,
+        width: 120, 
+        height: 120,
     }
 });
