@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     flex: 1,
     alignItems: "center",
-	paddingTop: 40,
+	  paddingTop: 40,
   },
   nameText: {
     fontFamily: DATACONST.font,
