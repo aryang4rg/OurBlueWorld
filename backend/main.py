@@ -248,11 +248,10 @@ def survey():
 
 	ret = {"status" : "success"}
 	response = app.response_class(
-      response=json.dumps(dict),
+      response=json.dumps(ret),
       status=200,
       mimetype='application/json'
    )
-
 	return response
 
 
@@ -295,7 +294,7 @@ def token():
    }
 
    response = app.response_class(
-      response=json.dumps(dict),
+      response=json.dumps(ret),
       status=200,
       mimetype='application/json'
    )
