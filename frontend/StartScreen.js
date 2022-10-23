@@ -8,11 +8,9 @@ const {
   TextInput,
 } = require("react-native");
 
-const { styles } = require("./styles");
+const {DATACONST} = require("./util.js");
 
 function StartScreen({navigation}) {
-//   let navigation = props.navigation;
-
   return (
       <View style={styles.startScreen}>
         <Text style={styles.startText}>GreenTracker</Text>
@@ -30,3 +28,20 @@ function StartScreen({navigation}) {
 }
 
 export { StartScreen };
+
+const styles = StyleSheet.create({
+	startScreen: {
+		backgroundColor: DATACONST.bkgColorMain,
+		justifyContent: "top",
+		alignItems: "center",
+		flex: 1,
+	},
+	startText: {
+		fontFamily: DATACONST.font,
+		fontSize: 50,
+    color: DATACONST.fontColor,
+		fontWeight: "bold",
+		textAlign: "center",
+		paddingVertical: 80,
+	},
+});
