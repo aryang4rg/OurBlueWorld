@@ -5,6 +5,8 @@ from flask import abort
 from flask import send_file
 from flask import json
 from flask_cors import CORS, cross_origin
+from os.path import dirname, abspath
+
 
 import string
 import random
@@ -323,9 +325,12 @@ def token():
 @app.route('/profilePicture', methods = ['GET'])
 def profilePicture():
 	username = request.args.get("q")
+	os_address = "./backend/cdn/profile_picture/" + username + ".png"
 	pic_address = "./cdn/profile_picture/" + username + ".png"
-	if not os.path.isdir(pic_address):
+
+	if (not os.path.exists(os_address)):
 		pic_address = "./cdn/profile_picture/defaultpfp.png"
+   
 	return send_file(pic_address, mimetype='image/png')
 
 if __name__ == '__main__':
