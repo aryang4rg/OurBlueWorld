@@ -147,6 +147,39 @@ def log_in():
    }
    return ret
 
+@app.route('/profile', methods = ['GET'])
+def profile():
+    username = request.args.get("q")
+    user = userdb.find(username)
+    if user == None:
+        abort(400, "user does not exist")
+    print("hi")
+    dict = user.__dict__
+    dict.pop("password")
+    dict.pop("token")
+    dict.pop("email")
+    dict.pop("phoneNumber")
+    return dict
+
+# @app.route('/leaderboard', methods = ['GET'])
+# def profile():
+#    users = userdb.find()
+#    sortedUsers = {}
+#    for userDict in : mongodb.mycol.find():
+#       sortedUsers[""]
+#       for j in range(i + 1, userdb.mycol.count_documents({})):
+#          if (userdb.)
+#    username = request.args.get("q")
+#    user = userdb.find(username)
+#    if user == None:
+#       abort(400, "user does not exist")
+#    print("hi")
+#    dict = user.__dict__
+#    dict.pop("password")
+#    dict.pop("token")
+#    dict.pop("email")
+#    dict.pop("phoneNumber")
+#    return dict
 
 if __name__ == '__main__':
     app.run()

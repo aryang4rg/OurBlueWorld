@@ -21,9 +21,12 @@ print(mongodb.myclient.list_database_names())
 print("\n")
 
 # print (isinstance(test1.activities, str))
+# print(mongodb.mycol.find())
+# for userDict in mongodb.mycol.find():
+#     print(userDict)
 
 # print(isinstance(mongodb.update(test4), User))
-mongodb.update(test1)
+# mongodb.update(test1)
 # mongodb.insert(test2)
 # mongodb.insert(test3)
 
