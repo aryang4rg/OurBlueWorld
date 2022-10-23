@@ -276,6 +276,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: DATACONST.bkgColorFour,
     borderRadius: 30,
+	width: 375,
     padding: 25,
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },

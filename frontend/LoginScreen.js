@@ -284,9 +284,9 @@ const styles = StyleSheet.create({
 		margin: 25,
 	},
 	tinyLogo: {
-		width: 100,
-		height: 100,
-		borderRadius: 100,
+		width: 120,
+		height: 120,
+		borderRadius: 120,
 	},
 	whiteContainer: {
 		flex: 1,
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
 	},
 	startText: {
 		fontFamily: DATACONST.font,
-		fontSize: 50,
+		fontSize: 45,
 		color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		textAlign: "center",
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
 	formText: {
 		fontFamily: DATACONST.font,
 		fontSize: 24,
-		color: DATACONST.fontColor,
+		color: "#0077b6",
 		fontWeight: "bold",
 		marginRight: 30,
 		display: "inline",

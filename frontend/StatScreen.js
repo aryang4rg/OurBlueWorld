@@ -200,9 +200,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   profilePicture: {
-    margin: 10,
+    margin: 5,
     borderRadius: 150,
-    width: 120,
-    height: 120,
+    width: 150,
+    height: 150,
   },
 });

@@ -37,7 +37,8 @@ function LeaderboardPerson(props) {
 	return (
 		<View style={styles.profileContainer}>
 			<Text style={styles.numberText}>{props.num}.</Text>
-			<Image style={styles.profilePicture} source={DATACONST.LOGOURL} />
+			{/* <Image style={styles.profilePicture} source={DATACONST.LOGOURL} /> */}
+			<Image style={styles.profilePicture} source={DATACONST.BASEURL + "profilePicture?q=" + props.data.username} />
 			<View style={styles.profileTextContainer}>
 				<Text style={styles.surveyText}>{props.data.name}</Text>
 				<Text style={styles.surveyText}>{"Impact Score: " + props.data.activities.impactScore}</Text>
@@ -57,8 +58,8 @@ class LeaderboardScreen extends React.Component {
 
 	componentDidMount() {
 		let someData = {
-			username: "aryangargFirst",
-			name: "Aryan",
+			username: "default",
+			name: "Alex",
 			groupid: "GroupId",
 			company: "Vanderbilt University",
 			activities: {
@@ -67,7 +68,7 @@ class LeaderboardScreen extends React.Component {
 				serviceScore: 231,
 				wasteScore: 2374,
 				impactScore: 23810,
-				numberOfActivities: 63,
+				numberOfActivities: 400,
 			},
 			city: "cupertino",
 			state: "California",
@@ -101,13 +102,13 @@ class LeaderboardScreen extends React.Component {
 				<View style={styles.mainContainer}>
 					<ScrollView>
 						<LeaderboardPerson num={1} data={this.state.data} />
-						<LeaderboardPerson  num={2} data={this.state.data} />
-						<LeaderboardPerson  num={3} data={this.state.data} />
-						<LeaderboardPerson  num={4} data={this.state.data} />
-						<LeaderboardPerson  num={5} data={this.state.data} />
+						<LeaderboardPerson  num={2} data={{name : "Allan", username : "allan", activities: {impactScore: 2900, numberOfActivities: 236}}} />
+						<LeaderboardPerson  num={3} data={{name : "Evelyn",  username : "evelyn", activities: {impactScore: 2567, numberOfActivities: 125}}} />
+						<LeaderboardPerson  num={4} data={{name : "Rohan",  username : "rohan", activities: {impactScore: 1563, numberOfActivities: 80}}} />
+						<LeaderboardPerson  num={5} data={{name : "Slayerofthend",  username : "slayerofthend", activities: {impactScore: 930, numberOfActivities: 34}}} />
 					</ScrollView>
 					{/* <View style={styles.secondaryContainer}> */}
-					
+
 					{/* </View> */}
 				</View>
 			</View>

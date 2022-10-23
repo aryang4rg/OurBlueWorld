@@ -10,7 +10,8 @@ export const DATACONST = {
 	bkgColorMain: "#064273",
 	bkgColorSecondary: "#def3f6",
 	bkgColorThree: "#76b6c4",
-	bkgColorFour: "#fff1d0",
+	// bkgColorFour: "#fff1d0",
+	bkgColorFour: "#dcedc9",
 };
 
 export const validateEmail = (email) => {
