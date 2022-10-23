@@ -34,6 +34,15 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
+		let createFormObj = (nameOfField) => {
+			return (
+				<View style={styles.textAndFormContainer}>
+					<Text style={styles.formText}>{nameOfField}</Text>
+					<TextInput id={"formField_"+nameOfField} style={styles.textInput} />
+				</View>
+			);
+		};
+
 		let navigation = this.props.navigation;
 		let user = "aryan";
 
@@ -110,7 +119,7 @@ class LoginForm extends React.Component {
 						/>
 					</View>
 					<Text style={styles.centerText}>
-						Already have an account? Login {" "}
+						Already have an account? Login{" "}
 						<a
 							style={styles.anchor}
 							onClick={() => {
