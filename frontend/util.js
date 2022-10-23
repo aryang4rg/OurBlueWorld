@@ -1,7 +1,8 @@
 const React = require("react");
 
 export const DATACONST = {
-	BASEURL: "http://localhost:3000/",
+	// BASEURL: "http://localhost:3000/",
+	BASEURL : "http://10.66.39.80:5010/",
 	LOGOURL: "https://media.discordapp.net/attachments/1032434111006118012/1033626593815437362/logo_1.png",
 	font: "Helvetica",
 	fontColor: "#7fcdff",

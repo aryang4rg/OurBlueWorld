@@ -69,40 +69,40 @@ class InputScreen extends React.Component {
 
     let user = this.props.user;
 
-    // let apiData = await fetch(BASEURL+"?q="+user);
-    // apiData = await apiData.json();
+    let apiData = await fetch(BASEURL+"profile?q="+user);
+    apiData = await apiData.json();
 
-    let apiData = {
-      username: "aryangarg",
-      name: "Rohan Rash",
-      groupid: "GroupId",
-      company: "Vanderbilt University",
-      activities: {
-        waterScore: 27,
-        co2Score: 87,
-        serviceScore: 31,
-        wasteScore: 74,
-        impactScore: 80,
-        numberOfActivities: 63,
-      },
-      city: "Cupertino",
-      state: "CA",
-    };
+    // let apiData = {
+    //   username: "aryangarg",
+    //   name: "Rohan Rash",
+    //   groupid: "GroupId",
+    //   company: "Vanderbilt University",
+    //   activities: {
+    //     waterScore: 27,
+    //     co2Score: 87,
+    //     serviceScore: 31,
+    //     wasteScore: 74,
+    //     impactScore: 80,
+    //     numberOfActivities: 63,
+    //   },
+    //   city: "Cupertino",
+    //   state: "CA",
+    // };
 
     this.setState({
       userData: apiData,
     });
   }
 
-  submitAnswers = () => {
+  submitAnswers = async () => {
     let waterScore =
       5 * (10 - this.showerValue) + 10 * (5 - this.bathroomValue);
     let CO2Score =
       0.5 * (100 - this.gasValue) + (50 / 24) * (24 - this.acValue);
     let plasticScore =
-      5 * (10 - this.plasticValue) + 5 * (this.recycleValue - 10);
+      5 * (10 - this.plasticValue) + 5 * (this.recycleValue);
     let volunteerScore =
-      5 * (this.volunteerValue - 10) + 5 * (this.pickValue - 10);
+      5 * (this.volunteerValue) + 5 * (this.pickValue);
     let impactScore =
       (waterScore + CO2Score + plasticScore + volunteerScore) / 4;
 
@@ -121,19 +121,22 @@ class InputScreen extends React.Component {
 
     // console.log(token);
 
-    // let fetchResp = await fetch(DATACONST.BASEURL + "/surveys", {
-    // 		method: "POST",
-    // 		body: JSON.stringify(surveyResults),
-    // 	});
+    let fetchResp = await fetch(DATACONST.BASEURL + "surveys", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(surveyResults),
+    });
 
-    // 	if (!fetchResp.ok) {
-    // 		console.error("Error logging in: " + JSON.stringify(fetchResp));
-    // 		alert("Survey Failed");
-    // 		return;
-    // 	}
+    if (!fetchResp.ok) {
+      console.error("Error logging in: " + JSON.stringify(fetchResp));
+      alert("Survey Failed");
+      return;
+    }
 
-    // 	let resp = await fetchResp.json();
-    // console.log(resp);
+    let resp = await fetchResp.json();
+    console.log(resp);
 
     this.props.navigation.navigate("Stats");
   };

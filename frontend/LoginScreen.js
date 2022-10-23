@@ -59,19 +59,22 @@ class LoginForm extends React.Component {
 	}
 
 	async login(username, password) {
-		// let fetchResp = await fetch(DATACONST.BASEURL + "/login", {
-		// 	method: "POST",
-		// 	body: JSON.stringify({ username, password }),
-		// });
+		let fetchResp = await fetch(DATACONST.BASEURL + "/login", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ username, password }),
+		});
 
-		// if (!fetchResp.ok) {
-		// 	console.error("Error logging in: " + JSON.stringify(fetchResp));
-		// 	alert("Login Failed");
-		// 	return;
-		// }
+		if (!fetchResp.ok) {
+			console.error("Error logging in: " + JSON.stringify(fetchResp));
+			alert("Login Failed");
+			return;
+		}
 
-		// let resp = await fetchResp.json();
-		let resp = sampleResp;
+		let resp = await fetchResp.json();
+		// let resp = sampleResp;
 		window.localStorage.setItem("token", resp.user.token);
 		this.props.navigation.navigate("Home", {
 			user: username,
@@ -94,25 +97,28 @@ class LoginForm extends React.Component {
 			name: fullName,
 			username: username,
 			password: password,
-			phoneNymber: phoneNumber,
+			phoneNumber: phoneNumber,
 			groupid: inviteCode,
 			city: city,
 			state: state,
 		};
 
-		// let fetchResp = await fetch(DATACONST.BASEURL + "/signup", {
-		// 	method: "POST",
-		// 	body: JSON.stringify(bodyObj),
-		// });
+		let fetchResp = await fetch(DATACONST.BASEURL + "signup", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(bodyObj),
+		});
 
-		// if (!fetchResp.ok) {
-		// 	console.error("Error signing up: " + JSON.stringify(fetchResp));
-		// 	alert("Signup Failed");
-		// 	return;
-		// }
+		if (!fetchResp.ok) {
+			console.error("Error signing up: " + JSON.stringify(fetchResp));
+			alert("Signup Failed");
+			return;
+		}
 
-		// let resp = await fetchResp.json();
-		let resp = sampleResp;
+		let resp = await fetchResp.json();
+		// let resp = sampleResp;
 		window.localStorage.setItem("token", resp.user.token);
 		this.props.navigation.navigate("Home", {
 			user: username,
@@ -234,7 +240,7 @@ class LoginForm extends React.Component {
 						<Button
 							color="black"
 							title="Signup"
-							onPress={() => navigation.navigate("Home", { user })}
+							onPress={this.handleButtonPress.bind(this)}
 						/>
 					</View>
 					<Text style={styles.centerText}>
