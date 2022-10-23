@@ -19,7 +19,7 @@ function LoginScreen({ navigation }) {
 					<View style={styles.whiteContainer}>
 					<Image style={styles.tinyLogo} source={DATACONST.LOGOURL} />
 					<Text style={styles.startText}>GreenTracker</Text>
-					<LoginForm />
+					<LoginForm navigation={navigation} />
 					</View>
 				</View>
 			</View>
@@ -36,6 +36,9 @@ class LoginForm extends React.Component
 
 	render()
 	{
+		let navigation = this.props.navigation;
+		let user = "aryan";
+
 		return <View>
 			<View style={styles.textAndFormContainer}>
 				<Text style={styles.formText}>Username</Text>
