@@ -251,7 +251,7 @@ def survey():
 		abort(400, "invalid")
 
 	for score in content["activity"]:
-		if isinstance(content["activity"][score], int):
+		if isinstance(content["activity"][score], int) or isinstance(content["activity"][score], float):
 			if not ((content["activity"][score] >= 0) and (content["activity"][score] <= 100)):
 				abort(400, "invalid score")
 		else:
