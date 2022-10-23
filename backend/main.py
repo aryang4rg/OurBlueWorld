@@ -153,7 +153,6 @@ def profile():
     user = userdb.find(username)
     if user == None:
         abort(400, "user does not exist")
-    print("hi")
     dict = user.__dict__
     dict.pop("password")
     dict.pop("token")
@@ -179,9 +178,8 @@ def leaderboard():
       myDict.pop("phoneNumber")
       returnList.append(myDict)
    
-   print("hi")
    returnDict = {"rankingList" : returnList}
-   print(returnDict)
+
    return returnDict
 
 if __name__ == '__main__':
