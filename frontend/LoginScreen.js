@@ -7,7 +7,31 @@ const {
 	Image,
 	TextInput,
 } = require("react-native");
-const { DATACONST } = require("./util");
+const { DATACONST, validateEmail, formatPhoneNumber } = require("./util");
+
+let sampleResp = {
+	status: "success",
+	user: {
+		username: "aryangarg",
+		password: "anfjkhBHfMyHashedPasswordajshdhfln",
+		name: "Aryan",
+		groupid: "GroupId",
+		company: "Vanderbilt University",
+		activities: {
+			waterScore: 274,
+			co2Score: 23487,
+			serviceScore: 231,
+			wasteScore: 2374,
+			impactScore: 23810,
+			numberOfActivities: 63,
+		},
+		token: "asldfasMytokenamasdf",
+		city: "cupertino",
+		state: "California",
+		email: "asdf",
+		phoneNumber: "239-234-5832",
+	},
+};
 
 function LoginScreen({ navigation }) {
 	let user = "aryan";
@@ -31,37 +55,156 @@ class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { type: "login" };
+		this.formVars = {};
+	}
+
+	async login(username, password) {
+		// let fetchResp = await fetch(DATACONST.BASEURL + "/login", {
+		// 	method: "POST",
+		// 	body: JSON.stringify({ username, password }),
+		// });
+
+		// if (!fetchResp.ok) {
+		// 	console.error("Error logging in: " + JSON.stringify(fetchResp));
+		// 	alert("Login Failed");
+		// 	return;
+		// }
+
+		// let resp = await fetchResp.json();
+		let resp = sampleResp;
+		window.localStorage.setItem("token", resp.user.token);
+		this.props.navigation.navigate("Home", {
+			user: username,
+			userData: resp.user,
+		});
+	}
+
+	async signup(
+		emailAddress,
+		fullName,
+		username,
+		password,
+		phoneNumber,
+		inviteCode,
+		city,
+		state
+	) {
+		let bodyObj = {
+			email: emailAddress,
+			name: fullName,
+			username: username,
+			password: password,
+			phoneNymber: phoneNumber,
+			groupid: inviteCode,
+			city: city,
+			state: state,
+		};
+
+		// let fetchResp = await fetch(DATACONST.BASEURL + "/signup", {
+		// 	method: "POST",
+		// 	body: JSON.stringify(bodyObj),
+		// });
+
+		// if (!fetchResp.ok) {
+		// 	console.error("Error signing up: " + JSON.stringify(fetchResp));
+		// 	alert("Signup Failed");
+		// 	return;
+		// }
+
+		// let resp = await fetchResp.json();
+		let resp = sampleResp;
+		window.localStorage.setItem("token", resp.user.token);
+		this.props.navigation.navigate("Home", {
+			user: username,
+			userData: resp.user,
+		});
+	}
+
+	handleButtonPress() {
+		if (this.state.type == "login") {
+			let username = this.formVars.Username.current.value;
+			let password = this.formVars.Password.current.value;
+
+			if (username.length == 0 || password.length == 0) {
+				alert("Please fill out all fields");
+				return;
+			}
+
+			// this.props.navigation.navigate("Home", { user: username });
+			this.login(username, password);
+		} else {
+			let emailAddress = this.formVars["Email Address"].current.value;
+			let fullName = this.formVars["Full Name"].current.value;
+			let username = this.formVars.Username.current.value;
+			let password = this.formVars.Password.current.value;
+			let phoneNumber = this.formVars["Phone Number"].current.value;
+			let inviteCode = this.formVars["Invite Code"].current.value;
+			let city = this.formVars.City.current.value;
+			let state = this.formVars.State.current.value;
+
+			if (
+				emailAddress.length == 0 ||
+				fullName.length == 0 ||
+				username.length == 0 ||
+				password.length == 0 ||
+				phoneNumber.length == 0 ||
+				inviteCode.length == 0 ||
+				city.length == 0 ||
+				state.length == 0
+			) {
+				alert("Please fill out all fields");
+				return;
+			}
+
+			if (validateEmail(emailAddress) == null) {
+				alert("Please enter a valid email address");
+				return;
+			}
+
+			let phoneNumFormatted = formatPhoneNumber(phoneNumber);
+			if (phoneNumFormatted == null) {
+				alert("Please enter a valid phone number");
+				return;
+			}
+
+			if (phoneNumFormatted[0] != "+") {
+				phoneNumFormatted = "+1 " + phoneNumFormatted;
+			}
+
+			this.signup(emailAddress, fullName, username, password, phoneNumFormatted, inviteCode, city, state);
+			// this.props.navigation.navigate("Home", { username });
+		}
 	}
 
 	render() {
-		let createFormObj = (nameOfField) => {
+		let createFormObj = (nameOfField, password = false) => {
+			this.formVars[nameOfField] = React.createRef();
+			let currTextInput = (
+				<TextInput
+					ref={this.formVars[nameOfField]}
+					secureTextEntry={password}
+					style={styles.textInput}
+				/>
+			);
+
 			return (
 				<View style={styles.textAndFormContainer}>
 					<Text style={styles.formText}>{nameOfField}</Text>
-					<TextInput id={"formField_"+nameOfField} style={styles.textInput} />
+					{currTextInput}
 				</View>
 			);
 		};
 
-		let navigation = this.props.navigation;
-		let user = "aryan";
-
 		if (this.state.type == "login") {
 			return (
 				<View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Username</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Password</Text>
-						<TextInput secureTextEntry={true} style={styles.textInput} />
-					</View>
+					{createFormObj("Username")}
+					{createFormObj("Password", true)}
 					<View style={styles.button}>
 						<Button
 							color="black"
 							title="Login"
-							onPress={() => navigation.navigate("Home", { user })}
+							onPress={this.handleButtonPress.bind(this)}
 						/>
 					</View>
 					<Text style={styles.centerText}>
@@ -79,38 +222,14 @@ class LoginForm extends React.Component {
 		} else {
 			return (
 				<View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Email Address</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Full Name</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Username</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Password</Text>
-						<TextInput secureTextEntry={true} style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Phone Number</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>Invite Code</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>City</Text>
-						<TextInput style={styles.textInput} />
-					</View>
-					<View style={styles.textAndFormContainer}>
-						<Text style={styles.formText}>State</Text>
-						<TextInput style={styles.textInput} />
-					</View>
+					{createFormObj("Email Address")}
+					{createFormObj("Full Name")}
+					{createFormObj("Username")}
+					{createFormObj("Password", true)}
+					{createFormObj("Phone Number")}
+					{createFormObj("Invite Code")}
+					{createFormObj("City")}
+					{createFormObj("State")}
 					<View style={styles.button}>
 						<Button
 							color="black"
