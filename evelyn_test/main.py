@@ -51,6 +51,10 @@ def sign_up():
       abort(400, "invalid")
    if(not check_string("state", content)):
       abort(400, "invalid")
+   if(not check_string("email", content)):
+      abort(400, "invalid")
+   if(not check_string("phoneNumber", content)):
+      abort(400, "invalid")
    
    token = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
 
