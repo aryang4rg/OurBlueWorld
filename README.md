@@ -3,7 +3,7 @@
 Ever have a New Year's resolution that you didn't keep? We definitely have, except we now we have a solution. The app OurBlueWorld adds a sprinkle of extra motivation so more people will actively do more to saving our oceans, keeping our blue world blue. 
 
 ## What it does
-The main function of OurBlueWorld is allowing you to compete with your friends or communities in sustainable ocean practices. Users input information about how much water they use, distance traveled by car, and plastic use. The app then gives them a score indicating how much damage they are causing to marine ecosystems and shows them a leaderboard that ranks a group or organization by score. There are also comparison pages and information pages that show you how well you are doing compared to the rest of the world, and how each action you do affects marine life as a whole.
+The main function of OurBlueWorld is allowing you to compete with your friends or communities in sustainable ocean practices. Users input information about how much water they use, distance traveled by car, and plastic use. The app then gives them a score indicating how much they are improving marine ecosystems and shows them a leaderboard that ranks a group or organization by score. There are also comparison pages and information pages that show you how well you are doing compared to the rest of the world, and how each action you do affects marine life as a whole.
 
 ## How we built it
 OurBlueWorld is based on Python and JavaScript. We use MongoDB to keep track of users and organizations, Flask to pass information between the database and user inputs, and React Native for the user interface.
