@@ -7,6 +7,7 @@ import random
 
 from activities import Activities
 from mongo import Mongo
+from user import User
 
 app = Flask(__name__)
 
@@ -80,7 +81,6 @@ def sign_up():
             "activities": {
                 "waterScore": user_activities.waterScore,
                 "co2Score": user_activities.co2Score,
-                "consumptionScore": user_activities.consumptionScore,
                 "serviceScore": user_activities.serviceScore,
                 "wasteScore": user_activities.serviceScore,
                 "impactScore": user_activities.impactScore,
@@ -93,7 +93,15 @@ def sign_up():
             "phoneNumber": content["phoneNumber"],
         }
     }
-    Mongo.insert(ret)
+    
+    print(ret)
+    print(ret["user"])
+    print(ret["user"]["activities"])
+    
+    user_info = User.dictToUser(ret["user"])
+
+    userdb.insert(user_info)
+
     return ret
 
 
@@ -121,7 +129,6 @@ def log_in():
             "activities": {
                 "waterScore": current_user.activities["waterScore"],
                 "co2Score": current_user.activities["co2Score"],
-                "consumptionScore": current_user.activities["consumptionScore"],
                 "serviceScore": current_user.activities["serviceScore"],
                 "wasteScore": current_user.activities["wasteScore"],
                 "impactScore": current_user.activities["impactScore"],
