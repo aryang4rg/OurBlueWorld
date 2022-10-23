@@ -5,6 +5,8 @@ from flask import abort
 import string
 import random
 
+from backend.activities import Activities
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -58,9 +60,37 @@ def sign_up():
    
    token = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(64))
 
-   ret = { "status" : "success", "token" : token}
+   user_activities = Activities(0,0,0,0,0,0,0)
+
+   ret = {
+  "status" : "success", 
+  "user" : {
+   "username" : content["username"],
+  "password" : content["password"], 
+  "name" : content["name"],
+  "groupid" : content["groupid"], 
+  "company" : "Vanderbilt University",
+  "activities" : {
+      "waterScore" : user_activities.waterScore, 
+      "co2Score" : user_activities.co2Score,
+      "consumptionScore" : user_activities.consumptionScore,
+      "serviceScore" : user_activities.serviceScore, 
+      "wasteScore" : user_activities.serviceScore,
+      "impactScore" : user_activities.impactScore,
+      "numberOfActivities" : user_activities.numberOfActivities
+    }, 
+    "token" : token,
+    "city" : content["city"],
+    "state" : content["state"],
+    "email" : content["email"],
+    "phoneNumber" : content["phoneNumber"], 
+  }
+}
    return ret
 
+#@app.route('/signup', methods = ['POST'])
+#def log_in():
+   
 
 
 if __name__ == '__main__':
