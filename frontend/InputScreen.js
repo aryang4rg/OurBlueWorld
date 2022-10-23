@@ -84,7 +84,7 @@ class InputScreen extends React.Component {
         </View>
         <View style={styles.whiteContainer}>
           <View style={styles.questionContainer}>
-			<View style={alignItems="center"}>
+			<View style={{alignItems:"center"}}>
 			<Text style={styles.surveyText}>
               How many glasses of water did you drink?
             </Text>
