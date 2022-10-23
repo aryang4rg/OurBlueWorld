@@ -79,14 +79,14 @@ export { StatScreen };
 
 const styles = StyleSheet.create({
     statScreen: {
-		backgroundColor: "#064273",
+		backgroundColor: DATACONST.bkgColorSecondary,
 		justifyContent: "top",
 		flex: 1,
 	},
     statText: {
-        fontFamily: "Helvetica",
+        fontFamily: DATACONST.font,
 		fontSize: 50,
-        color: "#7fcdff",
+        color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		paddingVertical: 0,
         paddingHorizontal: 10,

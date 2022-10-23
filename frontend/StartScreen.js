@@ -8,6 +8,8 @@ const {
   TextInput,
 } = require("react-native");
 
+const {DATACONST} = require("./util.js");
+
 function StartScreen({navigation}) {
   return (
       <View style={styles.startScreen}>
@@ -29,15 +31,15 @@ export { StartScreen };
 
 const styles = StyleSheet.create({
 	startScreen: {
-		backgroundColor: "#064273",
+		backgroundColor: DATACONST.bkgColorMain,
 		justifyContent: "top",
 		alignItems: "center",
 		flex: 1,
 	},
 	startText: {
-		fontFamily: "Helvetica",
+		fontFamily: DATACONST.font,
 		fontSize: 50,
-        color: "#7fcdff",
+    color: DATACONST.fontColor,
 		fontWeight: "bold",
 		textAlign: "center",
 		paddingVertical: 80,
