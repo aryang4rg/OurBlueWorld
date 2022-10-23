@@ -58,7 +58,7 @@ class LeaderboardScreen extends React.Component {
 
 	componentDidMount() {
 		let someData = {
-			username: "default",
+			username: "alex",
 			name: "Alex",
 			groupid: "GroupId",
 			company: "Vanderbilt University",
