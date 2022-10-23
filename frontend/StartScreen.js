@@ -20,7 +20,7 @@ function StartScreen({ navigation }) {
         }}
         style={{ width: 350, height: 350, margin: 80, borderRadius: 350 }}
       />
-      <Text style={styles.startText}>GreenTracker</Text>
+      <Text style={styles.startText}>OurBlueWorld</Text>
       {/* <Text style={styles.sloganText}>Slogan</Text> */}
       <View style={styles.button}>
         <Button
