@@ -7,6 +7,7 @@ from flask import json
 
 import string
 import random
+import os
 
 
 from activities import Activities
@@ -257,7 +258,7 @@ def survey():
 
 
 
-@app.route('/token', methods=['POST'])
+@app.route('/loginToken', methods=['POST'])
 def token():
    content = request.get_json()
    if ("token" not in content):
@@ -307,6 +308,8 @@ def token():
 def profilePicture():
 	username = request.args.get("q")
 	pic_address = "./cdn/profile_picture/" + username + ".png"
+	if os.path.isdir(pic_address):
+		pic_address = "./cdn/profile_picture/defaultpfp.png"
 	return send_file(pic_address, mimetype='image/png')
 
 if __name__ == '__main__':
