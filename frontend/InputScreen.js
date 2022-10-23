@@ -111,15 +111,15 @@ class InputScreen extends React.Component {
     let surveyResults = {
       token: token,
       activity: {
-        waterScore: waterScore,
-        co2Score: CO2Score,
-        serviceScore: volunteerScore,
-        wasteScore: plasticScore,
-        impactScore: impactScore,
+        waterScore: parseInt(waterScore),
+        co2Score: parseInt(CO2Score),
+        serviceScore: parseInt(volunteerScore),
+        wasteScore: parseInt(plasticScore),
+        impactScore: parseInt(impactScore),
       },
     };
 
-    // console.log(token);
+    console.log(surveyResults.activity.waterScore);
 
     let fetchResp = await fetch(DATACONST.BASEURL + "surveys", {
       method: "POST",
@@ -285,6 +285,7 @@ const styles = StyleSheet.create({
   questionContainer: {
     backgroundColor: DATACONST.bkgColorFour,
     borderRadius: 30,
+	width: 350,
     padding: 15,
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },

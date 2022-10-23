@@ -29,25 +29,25 @@ class StatScreen extends React.Component {
 
     let user = this.props.user;
 
-    // let apiData = await fetch(BASEURL+"?q="+user);
-    // apiData = await apiData.json();
-
-    let apiData = {
-      username: "aryangarg",
-      name: "Rohan Rash",
-      groupid: "GroupId",
-      company: "Vanderbilt University",
-      activities: {
-        waterScore: 27,
-        co2Score: 87,
-        serviceScore: 31,
-        wasteScore: 74,
-        impactScore: 80,
-        numberOfActivities: 63,
-      },
-      city: "Cupertino",
-      state: "CA",
-    };
+    let apiData = await fetch(BASEURL+"profile?q="+user);
+    apiData = await apiData.json();
+    console.log(apiData.activities.wasteScore/apiData.activities.numberOfActivities);
+    // let apiData = {
+    //   username: "aryangarg",
+    //   name: "Rohan Rash",
+    //   groupid: "GroupId",
+    //   company: "Vanderbilt University",
+    //   activities: {
+    //     waterScore: 27,
+    //     co2Score: 87,
+    //     serviceScore: 31,
+    //     wasteScore: 74,
+    //     impactScore: 80,
+    //     numberOfActivities: 63,
+    //   },
+    //   city: "Cupertino",
+    //   state: "CA",
+    // };
 
     this.setState({
       userData: apiData,
@@ -114,7 +114,11 @@ class StatScreen extends React.Component {
     }
 
     let personalInfo = this.state.userData;
-
+    let numActivities = personalInfo["activities"]["numberOfActivities"];
+    if(numActivities == 0) {
+      numActivities = 1;
+    }
+    console.log(parseInt(personalInfo["activities"]))
     return (
       <View style={styles.statScreen}>
         <Image
@@ -132,14 +136,14 @@ class StatScreen extends React.Component {
         <View style={{ flexDirection: "row" }}>
           <this.ProgressCircle
             size={140}
-            percent={personalInfo["activities"]["waterScore"]}
+            percent={parseInt(personalInfo["activities"]["waterScore"]/numActivities)}
             padding={5}
             color="#00ccff"
             category="Water"
           />
           <this.ProgressCircle
             size={140}
-            percent={personalInfo["activities"]["co2Score"]}
+            percent={parseInt(personalInfo["activities"]["co2Score"]/numActivities)}
             padding={5}
             color="black"
             category="CO2"
@@ -147,7 +151,7 @@ class StatScreen extends React.Component {
         </View>
         <this.ProgressCircle
           size={200}
-          percent={personalInfo["activities"]["impactScore"]}
+          percent={parseInt(personalInfo["activities"]["impactScore"]/numActivities)}
           padding={0}
           color="green"
           category="Impact Score"
@@ -155,14 +159,14 @@ class StatScreen extends React.Component {
         <View style={{ flexDirection: "row" }}>
           <this.ProgressCircle
             size={140}
-            percent={personalInfo["activities"]["wasteScore"]}
+            percent={parseInt(personalInfo["activities"]["wasteScore"]/numActivities)}
             padding={10}
             color="#c0c0c0"
             category="Waste"
           />
           <this.ProgressCircle
             size={140}
-            percent={personalInfo["activities"]["serviceScore"]}
+            percent={parseInt(personalInfo["activities"]["serviceScore"]/numActivities)}
             padding={10}
             color="#0c1b9a"
             category="Service"

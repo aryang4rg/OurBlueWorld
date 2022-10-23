@@ -1,3 +1,4 @@
+import { ScrollView } from "react-native";
 import { DATACONST } from "./util";
 
 const React = require("react");
@@ -35,7 +36,7 @@ props.data = {
 function LeaderboardPerson(props) {
 	return (
 		<View style={styles.profileContainer}>
-			<Text style={styles.numberText}>1.</Text>
+			<Text style={styles.numberText}>{props.num}.</Text>
 			<Image style={styles.profilePicture} source={DATACONST.LOGOURL} />
 			<View style={styles.profileTextContainer}>
 				<Text style={styles.surveyText}>{props.data.name}</Text>
@@ -98,9 +99,15 @@ class LeaderboardScreen extends React.Component {
 					<Text style={styles.headingText}>Vanderbilt's Leaderboard</Text>
 				</View>
 				<View style={styles.mainContainer}>
+					<ScrollView>
+						<LeaderboardPerson num={1} data={this.state.data} />
+						<LeaderboardPerson  num={2} data={this.state.data} />
+						<LeaderboardPerson  num={3} data={this.state.data} />
+						<LeaderboardPerson  num={4} data={this.state.data} />
+						<LeaderboardPerson  num={5} data={this.state.data} />
+					</ScrollView>
 					{/* <View style={styles.secondaryContainer}> */}
-					<LeaderboardPerson data={this.state.data} />
-					<LeaderboardPerson data={this.state.data} />
+					
 					{/* </View> */}
 				</View>
 			</View>
@@ -170,7 +177,7 @@ const styles = StyleSheet.create({
 	},
 	surveyText: {
 		fontFamily: DATACONST.font,
-		fontSize: 20,
+		fontSize: 18,
 		color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		margin: 6,

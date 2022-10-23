@@ -42,7 +42,7 @@ function LoginScreen({ navigation }) {
 				<View style={styles.whiteContainerContainer}>
 					<View style={styles.whiteContainer}>
 						<Image style={styles.tinyLogo} source={DATACONST.LOGOURL} />
-						<Text style={styles.startText}>GreenTracker</Text>
+						<Text style={styles.startText}>OurBlueWorld</Text>
 						<LoginForm navigation={navigation} />
 					</View>
 				</View>
