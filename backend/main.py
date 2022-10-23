@@ -211,7 +211,7 @@ def leaderboard():
    return response
 
 
-@app.route('/survey', methods=['POST'])
+@app.route('/surveys', methods=['POST'])
 def survey():
 	content = request.get_json()
 	if ("token" not in content):
