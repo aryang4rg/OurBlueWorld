@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
 		window.localStorage.setItem("token", resp.user.token);
 		this.props.navigation.navigate("Home", {
 			user: username,
-			userData: resp.user,
+			token: resp.user.token,
 		});
 	}
 

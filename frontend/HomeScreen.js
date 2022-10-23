@@ -16,13 +16,13 @@ const {StatScreen} = require("./StatScreen.js");
 
 function HomeScreen(props) {
   let route = props.route;
-  let {user} = route.params;
+  let {user, token} = route.params;
 
   const Tab = createBottomTabNavigator();
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Input" children={()=><InputScreen user={user}/>}/>
+      <Tab.Screen name="Input" children={()=><InputScreen user={user} token={token}/>}/>
       <Tab.Screen name="Leaderboard" children={()=><LeaderboardScreen user={user}/>}/>
       <Tab.Screen name="Stats" children={()=><StatScreen user={user}/>} options={{ headerShown: false }}/>
      </Tab.Navigator>
