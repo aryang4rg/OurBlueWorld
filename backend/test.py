@@ -22,17 +22,10 @@ print("\n")
 
 # print (isinstance(test1.activities, str))
 
-<<<<<<< HEAD
-mongodb.insert(test1)
-mongodb.insert(test2)
-mongodb.insert(test3)
-# print(mongodb.update(test4))
-=======
 # mongodb.insert(test1)
 # mongodb.insert(test2)
 # mongodb.insert(test3)
 # print(mongodb.insert(test2))
->>>>>>> f467516f3c4b5bb3b0bc4143c37c663b7c456c09
 # print(isinstance(mongodb.update(test4), User))
 
 # print(mongodb.update(test4)) # throws an error
