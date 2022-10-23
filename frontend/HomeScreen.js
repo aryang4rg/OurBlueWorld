@@ -24,7 +24,7 @@ function HomeScreen(props) {
     <Tab.Navigator>
       <Tab.Screen name="Input" children={()=><InputScreen user={user}/>}/>
       <Tab.Screen name="Leaderboard" children={()=><LeaderboardScreen user={user}/>}/>
-      <Tab.Screen name="Stats" children={()=><StatScreen user={user}/>}/>
+      <Tab.Screen name="Stats" children={()=><StatScreen user={user}/>} options={{ headerShown: false }}/>
      </Tab.Navigator>
   );
 }

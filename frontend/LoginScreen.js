@@ -57,13 +57,13 @@ class LoginForm extends React.Component {
 					</View>
 					<Text style={styles.centerText}>
 						Dont have an account? Create one{" "}
-						<a
+						<Text
 							style={styles.anchor}
 							onClick={() => {
 								this.setState({ type: "signup" });
 							}}>
 							here
-						</a>
+						</Text>
 					</Text>
 				</View>
 			);
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 		flexDirection: "coulmn",
 		justifyContent: "space-between",
 		width: "100%",
-		padding: "5px",
+		padding: 5,
 	},
 	background: {
 		backgroundColor: DATACONST.bkgColorMain,
@@ -147,11 +147,11 @@ const styles = StyleSheet.create({
 		height: "120%",
 	},
 	marginContainer: {
-		margin: "25px",
+		margin: 25,
 	},
 	tinyLogo: {
 		width: "75%",
-		height: "100px",
+		height: 100,
 	},
 	whiteContainer: {
 		flex: 1,
@@ -159,8 +159,8 @@ const styles = StyleSheet.create({
 	},
 	whiteContainerContainer: {
 		backgroundColor: DATACONST.bkgColorFour,
-		borderRadius: "15px",
-		padding: "25px",
+		borderRadius: 15,
+		padding: 25,
 		shadowColor: "#171717",
 		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.5,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		paddingVertical: 8,
 		paddingHorizontal: 50,
-		borderRadius: "10px",
+		borderRadius: 10,
 		elevation: 3,
 		margin: 10,
 		backgroundColor: "black",
@@ -187,22 +187,22 @@ const styles = StyleSheet.create({
 		color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		textAlign: "center",
-		margin: "5px",
+		margin: 5,
 	},
 	formText: {
 		fontFamily: DATACONST.font,
 		fontSize: 24,
 		color: DATACONST.fontColor,
 		fontWeight: "bold",
-		marginRight: "30px",
+		marginRight: 30,
 		display: "inline",
 	},
 	textInput: {
 		width: "100%",
-		paddingVertical: "6px",
-		paddingHorizontal: "12px",
+		paddingVertical: 6,
+		paddingHorizontal: 12,
 		border: "1px solid #ccc",
-		borderRadius: "4px",
+		borderRadius: 4,
 		shadowColor: "#171717",
 		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.05,
@@ -210,6 +210,6 @@ const styles = StyleSheet.create({
 		fontFamily: DATACONST.font,
 	},
 	rightMargin: {
-		paddingRight: "30px",
+		paddingRight: 30,
 	},
 });
