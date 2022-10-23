@@ -7,3 +7,8 @@ class Activities:
         self.wasteScore = wasteScore
         self.impactScore = impactScore
         self.numberOfActivities = numberOfActivities
+
+    @staticmethod
+    def dictToActivities(dict):
+        return Activities(dict["waterScore"], dict["co2Score"], dict["consumptionScore"], 
+                         dict["serviceScore"], dict["wasteScore"], dict["impactScore"], dict["numberOfActivities"])

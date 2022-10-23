@@ -1,6 +1,7 @@
 import pymongo
 from user import User
 
+
 class Mongo:
     def __init__(self):
         self.myclient = pymongo.MongoClient("mongodb://localhost:27017/")
