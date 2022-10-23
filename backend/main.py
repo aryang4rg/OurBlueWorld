@@ -68,7 +68,7 @@ def sign_up():
     token = ''.join(random.choice(string.ascii_letters + string.digits)
                     for _ in range(64))
 
-    user_activities = Activities(0, 0, 0, 0, 0, 0, 0)
+    user_activities = Activities(0, 0, 0, 0, 0, 0)
 
     ret = {
         "status": "success",
