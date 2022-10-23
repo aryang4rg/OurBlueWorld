@@ -17,9 +17,9 @@ function LoginScreen({ navigation }) {
 			<View style={styles.marginContainer}>
 				<View style={styles.whiteContainerContainer}>
 					<View style={styles.whiteContainer}>
-					<Image style={styles.tinyLogo} source={DATACONST.LOGOURL} />
-					<Text style={styles.startText}>GreenTracker</Text>
-					<LoginForm navigation={navigation} />
+						<Image style={styles.tinyLogo} source={DATACONST.LOGOURL} />
+						<Text style={styles.startText}>GreenTracker</Text>
+						<LoginForm navigation={navigation} />
 					</View>
 				</View>
 			</View>
@@ -27,39 +27,101 @@ function LoginScreen({ navigation }) {
 	);
 }
 
-class LoginForm extends React.Component
-{
-	constructor(props)
-	{
+class LoginForm extends React.Component {
+	constructor(props) {
 		super(props);
+		this.state = { type: "login" };
 	}
 
-	render()
-	{
+	render() {
 		let navigation = this.props.navigation;
 		let user = "aryan";
 
-		return <View>
-			<View style={styles.textAndFormContainer}>
-				<Text style={styles.formText}>Username</Text>
-				<TextInput style={styles.textInput} />
-			</View>
-			<View style={styles.textAndFormContainer}>
-				<Text style={styles.formText}>Password</Text>
-				<TextInput style={styles.textInput} />
-			</View>
-			<View style={styles.button}>
-				<Button
-					color="black"
-					title="Login"
-					onPress={() => navigation.navigate("Home", { user })}
-				/>
-			</View>
-			<Text style={styles.centerText}>
-				Dont have an account? Create one <a style={styles.anchor}>here</a>
-			</Text>
-
-		</View>
+		if (this.state.type == "login") {
+			return (
+				<View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Username</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Password</Text>
+						<TextInput secureTextEntry={true} style={styles.textInput} />
+					</View>
+					<View style={styles.button}>
+						<Button
+							color="black"
+							title="Login"
+							onPress={() => navigation.navigate("Home", { user })}
+						/>
+					</View>
+					<Text style={styles.centerText}>
+						Dont have an account? Create one{" "}
+						<a
+							style={styles.anchor}
+							onClick={() => {
+								this.setState({ type: "signup" });
+							}}>
+							here
+						</a>
+					</Text>
+				</View>
+			);
+		} else {
+			return (
+				<View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Email Address</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Full Name</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Username</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Password</Text>
+						<TextInput secureTextEntry={true} style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Phone Number</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>Invite Code</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>City</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.textAndFormContainer}>
+						<Text style={styles.formText}>State</Text>
+						<TextInput style={styles.textInput} />
+					</View>
+					<View style={styles.button}>
+						<Button
+							color="black"
+							title="Signup"
+							onPress={() => navigation.navigate("Home", { user })}
+						/>
+					</View>
+					<Text style={styles.centerText}>
+						Already have an account? Login {" "}
+						<a
+							style={styles.anchor}
+							onClick={() => {
+								this.setState({ type: "login" });
+							}}>
+							here
+						</a>
+					</Text>
+				</View>
+			);
+		}
 	}
 }
 
@@ -67,23 +129,22 @@ export { LoginScreen };
 
 const styles = StyleSheet.create({
 	anchor: {
-		color: "blue"
+		color: "blue",
 	},
 	centerText: {
-		textAlign: "center"
+		textAlign: "center",
 	},
-	textAndFormContainer:
-	{
+	textAndFormContainer: {
 		flex: 1,
 		flexDirection: "coulmn",
 		justifyContent: "space-between",
 		width: "100%",
-		padding: "5px"
+		padding: "5px",
 	},
 	background: {
 		backgroundColor: DATACONST.bkgColorMain,
 		width: "100%",
-		height: "100%",
+		height: "120%",
 	},
 	marginContainer: {
 		margin: "25px",
@@ -94,14 +155,14 @@ const styles = StyleSheet.create({
 	},
 	whiteContainer: {
 		flex: 1,
-		alignItems: "center"
+		alignItems: "center",
 	},
 	whiteContainerContainer: {
 		backgroundColor: DATACONST.bkgColorFour,
 		borderRadius: "15px",
 		padding: "25px",
-		shadowColor: '#171717',
-		shadowOffset: {width: -2, height: 4},
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.5,
 		shadowRadius: 3,
 	},
@@ -115,8 +176,8 @@ const styles = StyleSheet.create({
 		margin: 10,
 		backgroundColor: "black",
 		fontSize: 52,
-		shadowColor: '#171717',
-		shadowOffset: {width: -2, height: 4},
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.2,
 		shadowRadius: 3,
 	},
@@ -126,16 +187,15 @@ const styles = StyleSheet.create({
 		color: DATACONST.fontColor2,
 		fontWeight: "bold",
 		textAlign: "center",
-		margin: "5px"
+		margin: "5px",
 	},
-	formText:
-	{
+	formText: {
 		fontFamily: DATACONST.font,
 		fontSize: 24,
 		color: DATACONST.fontColor,
 		fontWeight: "bold",
 		marginRight: "30px",
-		display: "inline"
+		display: "inline",
 	},
 	textInput: {
 		width: "100%",
@@ -143,12 +203,13 @@ const styles = StyleSheet.create({
 		paddingHorizontal: "12px",
 		border: "1px solid #ccc",
 		borderRadius: "4px",
-		shadowColor: '#171717',
-		shadowOffset: {width: -2, height: 4},
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 4 },
 		shadowOpacity: 0.05,
 		shadowRadius: 3,
+		fontFamily: DATACONST.font,
 	},
 	rightMargin: {
-		paddingRight: "30px"
-	}
+		paddingRight: "30px",
+	},
 });
