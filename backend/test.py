@@ -11,6 +11,7 @@ test3 = User("evelyn", "651", "Evelyn", "876971", "Vanderbilt", "Test Token 3", 
 test4 = User("robot", "742", "Rohan", "998702", "Vanderbilt U", "Token4", "Sunnyvale", "CA", "rohansmail", "324-456-7890", None, "3")
 test5 = User("robot", "555", "Rashingkar", "8796", "Updated U", "Token5", "Sunnyvale", "CA", "rohansmail2", "554-456-6456")
 
+# db.users.find().pretty()
 # x = json.dumps(test.__dict__)
 # print("\n" + x + "\n")
 # print(test.__dict__)
@@ -24,7 +25,7 @@ print("\n")
 # mongodb.insert(test1)
 # mongodb.insert(test2)
 # mongodb.insert(test3)
-print(mongodb.update(test4))
+# print(mongodb.insert(test2))
 # print(isinstance(mongodb.update(test4), User))
 
 # print(mongodb.update(test4)) # throws an error
