@@ -24,8 +24,8 @@ function HomeScreen(props) {
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Input" children={()=><InputScreen user={user} navigation={props.navigation} token={token}/>}/>
-      <Tab.Screen name="Leaderboard" children={()=><LeaderboardScreen user={user} navigation={props.navigation}/>}/>
+      <Tab.Screen name="Input" children={()=><InputScreen user={user} navigation={props.navigation} token={token}/>} options={{ headerShown: false }}/>
+      <Tab.Screen name="Leaderboard" children={()=><LeaderboardScreen user={user} navigation={props.navigation}/>} options={{ headerShown: false }}/>
       <Tab.Screen name="Stats" children={()=><StatScreen user={user} navigation={props.navigation}/>} options={{ headerShown: false }}/>
      </Tab.Navigator>
   );

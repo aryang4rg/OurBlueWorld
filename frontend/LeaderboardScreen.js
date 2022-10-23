@@ -12,7 +12,7 @@ const {
 const {
 	NavigationContainer,
 	useNavigation,
-  } = require("@react-navigation/native");
+} = require("@react-navigation/native");
 
 /*
 props.data = {
@@ -84,23 +84,54 @@ class LeaderboardScreen extends React.Component {
 		}
 
 		return (
-			<View style={styles.mainContainer}>
-				{/* <View style={styles.secondaryContainer}> */}
+			<View style={styles.leadershipScreen}>
+				<View style={styles.whiteContainerContainer}>
+					<Image
+						source={{
+							// uri: BASEURL+"profile_picture?q="+personalInfo["username"],
+							uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Vanderbilt_Commodores_logo.svg/1051px-Vanderbilt_Commodores_logo.svg.png",
+						}}
+						style={styles.surveyPicture}
+					/>
+					<Text style={styles.headingText}>Vanderbilt's Leaderboard</Text>
+				</View>
+				<View style={styles.mainContainer}>
+					{/* <View style={styles.secondaryContainer}> */}
 					<LeaderboardPerson data={this.state.data} />
 					<LeaderboardPerson data={this.state.data} />
-				{/* </View> */}
+					{/* </View> */}
+				</View>
 			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
+	leadershipScreen: {
+		backgroundColor: DATACONST.bkgColorSecondary,
+		justifyContent: "top",
+		flex: 1,
+		alignItems: "center",
+		paddingTop: 10,
+	},
+	headingText: {
+		fontFamily: DATACONST.font,
+		fontSize: 30,
+		color: DATACONST.fontColor2,
+		margin: 10,
+		fontWeight: "bold",
+	},
+	surveyPicture: {
+		margin: 10,
+		borderRadius: 80,
+		width: 80,
+		height: 80,
+	},
 	mainContainer: {
 		backgroundColor: DATACONST.bkgColorSecondary,
 		height: "100%",
 		width: "100%",
 		padding: 15,
-
 	},
 	secondaryContainer: {
 		borderRadius: "35%",
@@ -118,7 +149,12 @@ const styles = StyleSheet.create({
 	profileContainer: {
 		backgroundColor: DATACONST.bkgColorFour,
 		flexDirection: "row",
-		height: 90
+		borderRadius: 20,
+		margin: 5,
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 4 },
+		shadowOpacity: 0.5,
+		shadowRadius: 3,
 	},
 	profileTextContainer: {
 		flex: 1,
@@ -128,7 +164,18 @@ const styles = StyleSheet.create({
 		margin: 10,
 		borderRadius: 150,
 		width: 90,
-		height: 90
+		height: 90,
+	},
+	whiteContainerContainer: {
+		flexDirection: "row",
+		backgroundColor: DATACONST.bkgColorFour,
+		borderRadius: 30,
+		padding: 15,
+		paddingHorizontal: 5,
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 6 },
+		shadowOpacity: 0.5,
+		shadowRadius: 5,
 	},
 });
 

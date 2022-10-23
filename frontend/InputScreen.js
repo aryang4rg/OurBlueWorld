@@ -158,7 +158,6 @@ class InputScreen extends React.Component {
             </Text>
             <Image
               source={{
-                // uri: BASEURL+"profile_picture?q="+personalInfo["username"],
                 uri: "https://media.istockphoto.com/vectors/checklist-icon-vector-design-vector-id1327963048?k=20&m=1327963048&s=612x612&w=0&h=Kwki80wTh0CgHgptCSor5Nz6l3GGPrTMDInJ7CnQ3GU=",
               }}
               style={styles.surveyPicture}
