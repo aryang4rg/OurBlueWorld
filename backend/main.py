@@ -5,7 +5,7 @@ from flask import abort
 import string
 import random
 
-from backend.activities import Activities
+from activities import Activities
 
 app = Flask(__name__)
 

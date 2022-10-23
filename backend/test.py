@@ -21,10 +21,10 @@ print("\n")
 
 # print (isinstance(test1.activities, str))
 
-# mongodb.insert(test1)
-# mongodb.insert(test2)
-# mongodb.insert(test3)
-print(mongodb.update(test4))
+mongodb.insert(test1)
+mongodb.insert(test2)
+mongodb.insert(test3)
+# print(mongodb.update(test4))
 # print(isinstance(mongodb.update(test4), User))
 
 # print(mongodb.update(test4)) # throws an error
