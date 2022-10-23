@@ -6,8 +6,12 @@ import string
 import random
 
 from activities import Activities
+from mongo import Mongo
 
 app = Flask(__name__)
+
+
+userdb = Mongo()
 
 @app.route('/')
 def hello_world():
@@ -39,7 +43,6 @@ def sign_up():
          return False
    
    content = request.get_json()
-   print (content)
 
    if(not check_string("username", content)):
       abort(400, "invalid")
@@ -88,8 +91,45 @@ def sign_up():
 }
    return ret
 
-#@app.route('/signup', methods = ['POST'])
-#def log_in():
+@app.route('/signup', methods = ['POST'])
+def log_in():
+   content = request.get_json()
+   if("username" not in content):
+      abort(400, "invalid")
+   if("password" not in content):
+      abort(400, "invalid")
+   
+   current_user = userdb.find(content["username"])
+
+   if (content["password"] != current_user.password):
+      abort(400, "wrong password")
+   
+   ret = {
+  "status" : "success", 
+  "user" : {
+  "username" : current_user.username,
+  "password" : current_user.password, 
+  "name" : current_user.name,
+  "groupid" : current_user.groupid, 
+  "company" : "Vanderbilt University",
+  "activities" : {
+      "waterScore" : current_user.activities["waterScore"],
+      "co2Score" : current_user.activities["co2Score"],
+      "consumptionScore" : current_user.activities["consumptionScore"],
+      "serviceScore" : current_user.activities["serviceScore"], 
+      "wasteScore" : current_user.activities["wasteScore"],
+      "impactScore" : current_user.activities["impactScore"],
+      "numberOfActivities" : current_user.activities["numberOfActivities"]
+    }, 
+    "token" : current_user.token,
+    "city" : current_user.city,
+    "state" : current_user.state,
+    "email" : current_user.email,
+    "phoneNumber" : current_user.phoneNumber, 
+  }
+  }
+   return ret
+
    
 
 
