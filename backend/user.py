@@ -23,3 +23,6 @@ class User:
         return User(dict["username"], dict["password"], dict["name"], dict["groupid"], dict["company"], 
             dict["token"], dict["city"], dict["state"], dict["email"], dict["phoneNumber"],
             Activities.dictToActivities(dict["activities"]))
+
+    def __lt__(self, other):
+        return self.activities["impactScore"] < other.activities["impactScore"]
