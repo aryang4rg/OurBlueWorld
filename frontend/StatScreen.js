@@ -148,6 +148,9 @@ class StatScreen extends React.Component {
           style={styles.profilePicture}
         />
         <Text style={styles.nameText}>{personalInfo["name"]}</Text>
+		<Text style={styles.smallText}>
+          {personalInfo["company"]}
+        </Text>
         <Text style={styles.smallText}>
           {personalInfo["city"] + ", " + personalInfo["state"]}
         </Text>
@@ -203,7 +206,7 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     flex: 1,
     alignItems: "center",
-	paddingTop: 50,
+	paddingTop: 40,
   },
   nameText: {
     fontFamily: DATACONST.font,
