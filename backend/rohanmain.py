@@ -3,6 +3,8 @@ from flask import Flask
 from flask import request
 from flask import abort
 from flask import send_file
+from flask import json
+
 import string
 import random
 
@@ -49,7 +51,17 @@ def survey():
 	userdb.update(current_user)
 
 	ret = {"status" : "success"}
-	return ret
+
+   
+	response = app.response_class(
+        response=json.dumps(ret),
+        status=200,
+        mimetype='application/json'
+   )
+   
+	return response
+
+
 
 
 
