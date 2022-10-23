@@ -3,7 +3,7 @@ from twilio.rest import Client
 import sched, time
 
 
-with open("./twilo/tokens.json") as f:
+with open("./twilio/tokens.json") as f:
 	data = json.load(f)
 	account_sid = data["account_sid"]
 	auth_token = data["auth_token"]
