@@ -22,5 +22,6 @@ class User:
     
     @staticmethod
     def dictToUser(dict):
-        return User(dict["username"], dict["password"], dict["name"], dict["groupid"], dict["company"], dict["activities"], 
-            dict["token"], dict["city"], dict["state"], dict["email"], dict["phoneNumber"], dict["_id"])
+        return User(dict["username"], dict["password"], dict["name"], dict["groupid"], dict["company"], 
+            dict["token"], dict["city"], dict["state"], dict["email"], dict["phoneNumber"],
+            Activities.dictToActivities(dict["activities"]), dict["_id"])
