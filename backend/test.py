@@ -18,12 +18,26 @@ test5 = User("robot", "555", "Rashingkar", "8796", "Updated U", "Token5", "Sunny
 
 mongodb = mongo.Mongo()
 print(mongodb.myclient.list_database_names())
-print("\n")
+dict = {2: 5, 4: 5, 6: 2}
+print(dict)
 
+# userList = []
+# x = mongodb.mycol.find()
+# for userDict in mongodb.mycol.find():
+#       userList.append(User.dictToUser(userDict))
+# userList.sort()
+# for user1 in userList:
+#     print(user1.activities["impactScore"])
+# myList = [1,2,3]
+# print(myList)
+# print (isinstance(mongodb.mycol.find()))
 # print (isinstance(test1.activities, str))
+# print(mongodb.mycol.find())
+# for userDict in mongodb.mycol.find():
+#     print(userDict)
 
 # print(isinstance(mongodb.update(test4), User))
-mongodb.update(test1)
+# mongodb.update(test1)
 # mongodb.insert(test2)
 # mongodb.insert(test3)
 

@@ -23,3 +23,16 @@ class User:
         return User(dict["username"], dict["password"], dict["name"], dict["groupid"], dict["company"], 
             dict["token"], dict["city"], dict["state"], dict["email"], dict["phoneNumber"],
             Activities.dictToActivities(dict["activities"]))
+
+    def __lt__(self, other):
+        thisScore = self.activities["impactScore"]
+        thisNumber = self.activities["numberOfActivities"]
+        otherScore = other.activities["impactScore"]
+        otherNumber = other.activities["numberOfActivities"]
+
+        if thisNumber == 0:
+            thisNumber = 1
+        if otherNumber == 0:
+            otherNumber = 1
+        
+        return 1.0 * thisScore / thisNumber < 1.0 * otherScore / otherNumber
