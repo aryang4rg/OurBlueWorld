@@ -163,10 +163,14 @@ def profile():
 
 # @app.route('/leaderboard', methods = ['GET'])
 # def profile():
-#    users = userdb.find()
+#    users = userdb.mycol.find()
 #    sortedUsers = {}
-#    for userDict in : mongodb.mycol.find():
-#       sortedUsers[""]
+#    for userDict in users:
+#       sortedUsers[userDict["username"]] = (userDict["activities"])["impactScore"]
+   
+
+
+
 #       for j in range(i + 1, userdb.mycol.count_documents({})):
 #          if (userdb.)
 #    username = request.args.get("q")
