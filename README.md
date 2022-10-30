@@ -1,4 +1,17 @@
 # Our Blue World
+
+### UPDATE: This project won 1st prize in the Enviorment Category for VandyHacks 
+
+## Pictures of Project
+
+![Profile Page](profile.png)
+
+![Survey Page](survey.png)
+
+![Leaderboard Page](leaderboard.png)
+
+![Login Page](login.png)
+
 ## Inspiration
 Ever have a New Year's resolution that you didn't keep? We definitely have, except we now we have a solution. The app OurBlueWorld adds a sprinkle of extra motivation so more people will actively do more to saving our oceans, keeping our blue world blue. 
 
@@ -16,3 +29,17 @@ We are very proud of everything we learned, and coming as far as we did with our
 
 ## What's next for OurBlueWorld
 In the future, OurBlueWorld will implement more factors to consider. Other features include allowing a user to join multiple leaderboards, and a global leaderboard. There will also be more graphics and comparisons, so the user can better understand their impact and see how they are changing throughout time.
+
+## Meet The Team:
+
+Aryan Garg - Main Team Lead 
+
+Allan Zhang - Main Frontend Developer 
+
+Evelyn Z - Main Backend Developer 
+
+Rohan Rashingkar - Backend/Database Engineer 
+
+
+
+
